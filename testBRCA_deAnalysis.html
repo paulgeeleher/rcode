@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>A script for comparing differential expression between HER2+ and HER2- breast cancers and comparing the results to those observed when comparing HER2+ and HER2- samples in GDSC.
+Load libraries</p>
+
+<pre><code class="r">library(&quot;GenomicRanges&quot;)
+library(&quot;ggplot2&quot;)
+library(&quot;TxDb.Hsapiens.UCSC.hg19.knownGene&quot;)
+library(&quot;org.Hs.eg.db&quot;)
+library(&quot;GenomicFeatures&quot;)
+</code></pre>
+
+<p>Set the root directory.</p>
+
+<pre><code class="r">theRootDir &lt;- &quot;/media/user/My Passport/UofC_backup/bionimbus/data_scratch/finalData/&quot;
+</code></pre>
+
+<p>Load the TCGA breast cancer expression data.</p>
+
+<pre><code class="r">brcaDataLoc &lt;- paste(theRootDir, &quot;dataIn/rnaSeq/gdac.broadinstitute.org_BRCA.Merge_rnaseqv2__illuminahiseq_rnaseqv2__unc_edu__Level_3__RSEM_genes__data.Level_3.2015082100.0.0/BRCA.rnaseqv2__illuminahiseq_rnaseqv2__unc_edu__Level_3__RSEM_genes__data.data.txt&quot;, sep=&quot;&quot;)
+tpmDatMat_bc &lt;- read.delim(brcaDataLoc, as.is=T)
+tpmDatMat_bc_tpm &lt;- apply(tpmDatMat_bc[-1,which(tpmDatMat_bc[1,] == &quot;scaled_estimate&quot;)], 2, as.numeric)
+tpmDatMat_bc_tpm &lt;- tpmDatMat_bc[-1,which(tpmDatMat_bc[1,] == &quot;scaled_estimate&quot;)]
+tpmDatMat_bc_tpm &lt;- apply(tpmDatMat_bc_tpm, 2, as.numeric)
+geneNames &lt;- do.call(cbind, strsplit(tpmDatMat_bc[, &quot;Hybridization.REF&quot;], &quot;|&quot;, fixed=TRUE))[1,][-1]
+rownames(tpmDatMat_bc_tpm) &lt;- geneNames
+colnames(tpmDatMat_bc_tpm) &lt;- substr(colnames(tpmDatMat_bc_tpm), 1, 28)
+tpmDatMat_bc_tpm_logged &lt;- log((tpmDatMat_bc_tpm*1000000)+1)
+tpmDatMat_bc_tpm_logged_tumor &lt;- tpmDatMat_bc_tpm_logged[, do.call(rbind, strsplit(colnames(tpmDatMat_bc_tpm_logged), &quot;.&quot;, fixed=T))[,4] == &quot;01A&quot;]
+colnames(tpmDatMat_bc_tpm_logged_tumor) &lt;- substring(colnames(tpmDatMat_bc_tpm_logged_tumor), 1, 12)
+colnames(tpmDatMat_bc_tpm_logged_tumor) &lt;- gsub(&quot;.&quot;, &quot;-&quot;, colnames(tpmDatMat_bc_tpm_logged_tumor),  fixed=T)
+</code></pre>
+
+<p>Load the matched clinical data for BRCA. This file contains the HER2 status, as measured by immunohistochemistry.</p>
+
+<pre><code class="r">clinicalDataLocation &lt;- paste(theRootDir, &quot;dataIn/clinical/nationwidechildrens.org_clinical_patient_brca.txt&quot;, sep=&quot;&quot;)
+clinDataBrca &lt;- read.delim(clinicalDataLocation, as.is=T)
+her2status &lt;- clinDataBrca[, &quot;her2_status_by_ihc&quot;]
+names(her2status) &lt;- clinDataBrca[, &quot;bcr_patient_barcode&quot;]
+</code></pre>
+
+<p>Load the tumor purity estimates.</p>
+
+<pre><code class="r">nComsProps &lt;- read.csv(&quot;/media/user/My Passport/UofC_backup/bionimbus/data_scratch/prediXcanProj/ncomms9971-s2.csv&quot;, as.is=T)
+rownames(nComsProps) &lt;- nComsProps[,1]
+nComsProps_brca &lt;- nComsProps[nComsProps[,2] == &quot;BRCA&quot; &amp; substring(nComsProps[,1], 14, 16) == &quot;01A&quot;, &quot;CPE&quot;] # exctract 01A (primary site) breast cancer samples.
+names(nComsProps_brca) &lt;- nComsProps[nComsProps[,2] == &quot;BRCA&quot; &amp; substring(nComsProps[,1], 14, 16) == &quot;01A&quot;, 1]
+nComsProps_brca_noNa &lt;- nComsProps_brca[!is.na(nComsProps_brca)]
+names(nComsProps_brca_noNa) &lt;- substring(names(nComsProps_brca_noNa), 1, 12)
+samplesInAllThree &lt;- intersect(intersect(colnames(tpmDatMat_bc_tpm_logged_tumor), names(her2status)), names(nComsProps_brca_noNa))
+</code></pre>
+
+<p>Test association of gene expression and purity as a sanity check (we expect lots of associations - this looks as expected).</p>
+
+<pre><code class="r">options(warn=-1)
+pTumPurExpr &lt;- numeric()
+for(i in 1:nrow(tpmDatMat_bc_tpm_logged_tumor))
+{
+    pTumPurExpr[i] &lt;- cor.test(tpmDatMat_bc_tpm_logged_tumor[i,samplesInAllThree], nComsProps_brca_noNa[samplesInAllThree])$p.value
+}
+hist(pTumPurExpr)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-6"/></p>
+
+<p>Define her2 + to her2- TCGA patient samples.</p>
+
+<pre><code class="r">her2Neg &lt;- intersect(names(her2status[her2status == &quot;Negative&quot;]), samplesInAllThree)
+her2Pos &lt;- intersect(names(her2status[her2status == &quot;Positive&quot;]), samplesInAllThree)
+</code></pre>
+
+<p>Perform a simple differential expression analysis </p>
+
+<pre><code class="r">exprData &lt;- tpmDatMat_bc_tpm_logged_tumor[, c(her2Neg, her2Pos)]
+caseControlStatus &lt;- c(rep(0, length(her2Neg)), rep(1, length(her2Pos)))
+propsFin &lt;- 1- nComsProps_brca_noNa[c(her2Neg, her2Pos)]
+pValsNaiveTcga &lt;- numeric()
+pValsIntTcga &lt;- numeric()
+betaInt &lt;- numeric()
+betaNaive &lt;- numeric()
+for(i in 1:nrow(exprData))
+{
+    pValsNaiveTcga[i] &lt;- coef(summary(lm(exprData[i,]~caseControlStatus)))[2,4] # Bulk tumor analysis.
+    pValsIntTcga[i] &lt;- coef(summary(lm(exprData[i,]~caseControlStatus*propsFin)))[2,4] # Cancer specific analysis.
+    betaInt[i]  &lt;- coef(summary(lm(exprData[i,]~caseControlStatus*propsFin)))[2,1]
+    betaNaive[i] &lt;- coef(summary(lm(exprData[i,]~caseControlStatus)))[2,1]
+}
+names(pValsIntTcga) &lt;- rownames(exprData)
+names(pValsNaiveTcga) &lt;- rownames(exprData)
+names(betaInt) &lt;- rownames(exprData)
+names(betaNaive) &lt;- rownames(exprData)
+fdrNaiveTcga &lt;- p.adjust(pValsNaiveTcga, method=&quot;BH&quot;)
+fdrIntTcga &lt;- p.adjust(pValsIntTcga, method=&quot;BH&quot;)
+sigInt &lt;- names(sort(fdrIntTcga[which(fdrIntTcga &lt; 0.05)]))
+sigNaive &lt;- names(sort(fdrNaiveTcga[which(fdrNaiveTcga &lt; 0.05)]))
+</code></pre>
+
+<p>Now investigate the association between ERBB2 amplification and lapatinib sensitivty in the GDSC cell lines.
+Load the CNV data from GDSC This was acquired from cancerrxgene.org. Generated using Affymetrix SNP 6.0 data. This data was not mapped to genes by CGP, so we do that below. </p>
+
+<pre><code class="r">allCnvs &lt;- read.csv(paste(theRootDir, &quot;dataIn/cell_lines_copy_number.csv&quot;, sep=&quot;&quot;), as.is=T, header=T)
+cellLines_cnv_list &lt;- split(allCnvs, allCnvs[,1])
+</code></pre>
+
+<p>For each cell line in CGP, create a GenomicRanges object, which contains the locations and magnitutes of all Copy Number measurements. This data is GRCh37/hg19.</p>
+
+<pre><code class="r">grCnvsList &lt;- list()
+for(i in 1:length(cellLines_cnv_list))
+{
+  grCnvsList[[i]] &lt;- GRanges(seqnames=Rle(paste(&quot;chr&quot;, cellLines_cnv_list[[i]][, &quot;chr_37&quot;], sep=&quot;&quot;)), ranges=IRanges(cellLines_cnv_list[[i]][, &quot;startpos_37&quot;], cellLines_cnv_list[[i]][, &quot;endpos_37&quot;]), segMeans=cellLines_cnv_list[[i]][, &quot;totalCN&quot;])
+}
+names(grCnvsList) &lt;- names(cellLines_cnv_list)
+</code></pre>
+
+<p>Load the gene ranges for HG19 using.</p>
+
+<pre><code class="r">txdb &lt;- TxDb.Hsapiens.UCSC.hg19.knownGene
+geneRanges &lt;- genes(txdb)
+e2s = toTable(org.Hs.egSYMBOL)
+syms &lt;- e2s[, &quot;symbol&quot;]
+names(syms) &lt;- e2s[, &quot;gene_id&quot;]
+theGeneSymsOrd &lt;- syms[as.character(geneRanges$gene_id)]
+</code></pre>
+
+<p>We will now intersect the gene ranges with the CNV data in order to establish the copy number for each gene.</p>
+
+<pre><code class="r">numGenesQuantifid &lt;- numeric()
+theCnvQuantVecList &lt;- list()
+for(i in 1:length(grCnvsList))
+{
+    grCnvs &lt;- grCnvsList[[i]]
+
+    # Use count overlaps to find genes that unambiguously overlap a single peak. Give it an NA it it doesn&#39;t overlap a single peak. Assign it the value of the peak if it unambiguously overlaps a peak. PC.
+    numOverlaps &lt;- countOverlaps(geneRanges, grCnvs)
+    numGenesQuantifid[i] &lt;- sum(numOverlaps == 1)
+    inCnv &lt;- which(numOverlaps == 1) # take only gene unambiguously overlaping a peak, this is usually most genes.
+
+    theCnvQuantVec &lt;- rep(NA, length(geneRanges))
+    olaps &lt;- findOverlaps(geneRanges, grCnvs, type=&quot;within&quot;, ignore.strand=TRUE)
+    theCnvQuantVec[queryHits(olaps)] &lt;- grCnvs$segMeans[subjectHits(olaps)]
+    theCnvQuantVecList[[i]] &lt;- theCnvQuantVec
+    names(theCnvQuantVecList[[i]]) &lt;- theGeneSymsOrd
+}
+names(theCnvQuantVecList) &lt;- names(grCnvsList)
+theCnvQuantVecList_mat &lt;- do.call(cbind, theCnvQuantVecList)
+erbb2CnvVec &lt;- theCnvQuantVecList_mat[&quot;ERBB2&quot;,]
+</code></pre>
+
+<p>We will now do some analysis testing the gene CVNs against lapatinib sensitivty here in GDSC
+Load the CGP expression and phenotype data.</p>
+
+<pre><code class="r">load(&quot;/media/user/My Passport/UofC_backup/bionimbus/data_scratch/finalData/dataIn/drugAndPhenoCgp.RData&quot;) # &quot;drugSensitivityDataCgp&quot; &quot;drugToCellLineDataCgp&quot; &quot;gdsc_brainarray_syms
+load(&quot;/media/user/My Passport/UofC_backup/bionimbus/data_scratch/finalData/dataIn/cgp2016ExprRma.RData&quot;) # &quot;cgp2016ExprRma&quot; 
+breastCancerCellLines &lt;- drugSensitivityDataCgp[, &quot;Cell.Line&quot;][drugSensitivityDataCgp[, &quot;Tissue&quot;] == &quot;breast&quot;]
+</code></pre>
+
+<p>Intersect the expression and CNV data.</p>
+
+<pre><code class="r">isBrca_hasExpr_hasCnv &lt;- intersect(intersect(breastCancerCellLines, colnames(cgp2016ExprRma)), names(erbb2CnvVec))
+brcaErbb2CnvOrd &lt;- erbb2CnvVec[isBrca_hasExpr_hasCnv]
+brcaExprOrd &lt;- cgp2016ExprRma[,isBrca_hasExpr_hasCnv]
+</code></pre>
+
+<p>Identify DE genes associated with ERBB2 amplification in GDSC. We will treat nominally significant genes with concordant directionality as a gold standard.</p>
+
+<pre><code class="r">pVals &lt;- numeric()
+betaCellLines &lt;- numeric()
+for(i in 1:nrow(brcaExprOrd))
+{
+    pVals[i] &lt;- coef(summary(lm(brcaExprOrd[i,]~brcaErbb2CnvOrd)))[2,4]
+    betaCellLines[i] &lt;- coef(summary(lm(brcaExprOrd[i,]~brcaErbb2CnvOrd)))[2,1]
+}
+names(pVals) &lt;- rownames(brcaExprOrd)
+names(betaCellLines) &lt;- rownames(brcaExprOrd)
+nomSigCellLines &lt;- names(pVals)[pVals &lt; 0.05]
+pAdj &lt;- p.adjust(pVals, method=&quot;BH&quot;)
+sum(pAdj &lt; 0.05)
+</code></pre>
+
+<pre><code>## [1] 136
+</code></pre>
+
+<pre><code class="r">pAdj[pAdj &lt; 0.05]
+</code></pre>
+
+<pre><code>##        SCYL3      POLDIP2     TMEM132A     KIAA0100      CEACAM7 
+## 4.278430e-02 4.528816e-02 3.201843e-02 1.305891e-02 4.278430e-02 
+##      ST3GAL1       TSPAN9        XYLT2        CNTN1       FAM65C 
+## 4.619246e-03 4.830994e-02 1.966430e-02 1.516990e-02 4.913673e-02 
+##         EPN3       MGAT4A        SIDT1       CACNG4        TRAF4 
+## 1.035577e-02 5.035535e-03 2.860765e-02 6.877314e-03 1.321713e-02 
+##      RAP1GAP     TP53INP2       CRISP3        LZTR1        AP1B1 
+## 4.278430e-02 1.516990e-02 8.793357e-03 7.449495e-03 4.383427e-02 
+##        RBBP8        RAB3D        PSMD3        KPNB1        RASD1 
+## 3.195573e-02 2.307045e-02 4.278430e-02 1.771168e-02 1.998552e-02 
+##      PPP1R9B       LRRC59       CACNG1      SLC16A6     SLC9A3R1 
+## 9.750560e-03 3.344043e-02 3.693599e-02 1.321713e-02 3.693599e-02 
+##       SUPT6H        PHF12       GALNT7          VWF          NNT 
+## 1.042630e-02 1.988250e-02 4.001437e-02 4.278430e-02 4.278430e-02 
+##        ABCC5       SLC9A2         SDC1       TRIM62          KMO 
+## 4.278430e-02 1.035577e-02 4.830994e-02 1.812788e-02 5.436588e-03 
+##        ACYP1       EXOSC8        DUSP4      POLR3GL        CENPK 
+## 6.877314e-03 1.321713e-02 4.746195e-03 3.668846e-02 2.440076e-02 
+##        MCF2L       ORMDL1        TULP4       STARD3        ERAL1 
+## 4.830994e-02 4.278430e-02 1.812788e-02 6.640900e-11 1.357920e-02 
+##        RFXAP     CATSPERB        PSRC1      TMEM243        TACO1 
+## 3.303104e-02 4.830994e-02 4.278430e-02 1.477250e-02 4.914789e-02 
+##    NIPSNAP3A        TCF19       TMEM62        ERBB2         GRB7 
+## 1.035577e-02 4.640630e-02 3.195573e-02 4.768528e-16 4.768528e-16 
+##        MIEN1       TM4SF5        KCNH1        EPHA1       SEC16A 
+## 4.768528e-16 2.492599e-03 1.516990e-02 1.068157e-03 1.035577e-02 
+##      TMEM86A        CENPH        TEKT5         MSI2        GDPD1 
+## 1.594680e-02 3.232420e-02 4.514493e-02 3.195573e-02 3.693599e-02 
+##      SLC16A1        LRFN2         SNF8       CYB5R1          PIP 
+## 1.538943e-03 4.278430e-02 4.095175e-02 4.536726e-02 1.321713e-02 
+##      C21orf2       CACFD1         NEK8        PGAP3      ZNF385A 
+## 4.830994e-02 4.362478e-03 4.278430e-02 7.239781e-08 3.693599e-02 
+##       FAM84A       HDAC11        FYCO1      SERINC5     PPP1R14D 
+## 3.195573e-02 1.042630e-02 4.278430e-02 1.035577e-02 4.483278e-02 
+##      TMEM135     B4GALNT2          PHB        ACSF2         IRGQ 
+## 7.837098e-03 4.830994e-02 4.483278e-02 4.278430e-02 3.217861e-02 
+##      TRAPPC9         HID1        ACOX2        STIP1     TMEM150A 
+## 2.838053e-02 4.539220e-02 4.278430e-02 4.536726e-02 1.035577e-02 
+##         FASN       GPRC5C          FGB       ORMDL3      C2orf54 
+## 4.830994e-02 4.383427e-02 4.278430e-02 5.035535e-03 3.195573e-02 
+##         AGXT      FAM222B        ADCK5        ADCY5        NUDT4 
+## 4.640630e-02 1.035577e-02 4.278430e-02 4.095175e-02 4.830994e-02 
+##         TCAP        P2RY2       PHLDB3         ULK1       SAMD12 
+## 6.877314e-03 3.313109e-02 4.278430e-02 4.434243e-02 4.278430e-02 
+##      ARL6IP6       TSPYL6        GRINA      TMEM107       ZBTB42 
+## 4.291106e-02 3.344043e-02 4.278430e-02 2.979055e-02 4.640630e-02 
+##       CUEDC1        LIMK2        HMGN4        PDE4B    C14orf180 
+## 4.830994e-02 3.286373e-02 5.829525e-04 3.628920e-02 4.619246e-03 
+##       KLHL33       MAPK11     RALGAPA2       ARRDC1       ZNF655 
+## 4.095175e-02 4.830994e-02 1.812788e-02 3.628920e-02 4.290553e-02 
+##      SLC2A10       ZNF652        CAPN8      CCDC160      C9orf37 
+## 4.830994e-02 4.362478e-03 1.347829e-02 4.278430e-02 4.830994e-02 
+##    HSP90AB2P      COL28A1       SPINK8        NFAM1       MBD3L5 
+## 2.424471e-02 4.536726e-02 4.619246e-03 4.640630e-02 4.278430e-02 
+##      C4orf52 
+## 4.830994e-02
+</code></pre>
+
+<pre><code class="r">theDeGenes &lt;- names(sort(pAdj[pAdj &lt; 0.05]))
+genesBothDatasets &lt;- intersect(rownames(exprData), rownames(cgp2016ExprRma))
+</code></pre>
+
+<p>Subset to genes in both TCGA and GDSC datasets and compare the overlaps.</p>
+
+<pre><code class="r">theDeGenes_both &lt;- theDeGenes[theDeGenes %in% genesBothDatasets]
+sigInt_both &lt;- sigInt[sigInt %in% genesBothDatasets]
+sigNaive_both &lt;- sigNaive[sigNaive %in% genesBothDatasets]
+nomSigCellLines_both &lt;- nomSigCellLines[nomSigCellLines %in% genesBothDatasets]
+</code></pre>
+
+<p>How many differentially expressed genes overlap between the two datasets (compare FDR &lt; 0.05 from both datasets)</p>
+
+<pre><code class="r">sum(theDeGenes_both %in% sigInt_both) # cancer specific model
+</code></pre>
+
+<pre><code>## [1] 17
+</code></pre>
+
+<pre><code class="r">sum(theDeGenes_both %in% sigNaive_both) # naive bulk model
+</code></pre>
+
+<pre><code>## [1] 70
+</code></pre>
+
+<p>What proportion overlap (overlap is 5 times higher for cancer-specific model)</p>
+
+<pre><code class="r">sum(theDeGenes_both %in% sigInt_both) / length(sigInt_both)
+</code></pre>
+
+<pre><code>## [1] 0.07906977
+</code></pre>
+
+<pre><code class="r">sum(theDeGenes_both %in% sigNaive_both) / length(sigNaive_both)
+</code></pre>
+
+<pre><code>## [1] 0.01599634
+</code></pre>
+
+<p>Do the above analysis, treat nominally significant genes as the gold standard.</p>
+
+<pre><code class="r">sum(nomSigCellLines_both %in% sigInt_both) # cancer specific model
+</code></pre>
+
+<pre><code>## [1] 56
+</code></pre>
+
+<pre><code class="r">sum(nomSigCellLines_both %in% sigNaive_both) # naive bulk model
+</code></pre>
+
+<pre><code>## [1] 796
+</code></pre>
+
+<p>What proportions overlap? Has improved from 18% to 26%</p>
+
+<pre><code class="r">sum(nomSigCellLines_both %in% sigInt_both) / length(sigInt_both)
+</code></pre>
+
+<pre><code>## [1] 0.2604651
+</code></pre>
+
+<pre><code class="r">sum(nomSigCellLines_both %in% sigNaive_both) / length(sigNaive_both)
+</code></pre>
+
+<pre><code>## [1] 0.1819013
+</code></pre>
+
+<p>calculate fishers&#39;s exact test</p>
+
+<pre><code class="r">numOlapInt &lt;- sum(sigInt_both %in% nomSigCellLines_both)
+numNoOlapInt &lt;- sum(!sigInt_both %in% nomSigCellLines_both)
+numOlapNaive &lt;- sum(sigNaive_both %in% nomSigCellLines_both)
+numNoOlapNaive &lt;- sum(!sigNaive_both %in% nomSigCellLines_both)
+print(fisher.test(t(matrix(c(numOlapInt, numNoOlapInt, numOlapNaive, numNoOlapNaive), nrow=2))))
+</code></pre>
+
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  
+## p-value = 0.005229
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  1.135245 2.183414
+## sample estimates:
+## odds ratio 
+##   1.583839
+</code></pre>
+
+<p>Calculate the proportion of times directionality is concordant, is that improved? (ans: yes)</p>
+
+<pre><code class="r">concDirInt &lt;- betaInt[sigInt_both] * betaCellLines[sigInt_both] # how often is directionality concordant 
+concDirNaive &lt;- betaNaive[sigNaive_both] * betaCellLines[sigNaive_both]
+sum(concDirInt &gt; 0) / length(concDirInt)
+</code></pre>
+
+<pre><code>## [1] 0.7162791
+</code></pre>
+
+<pre><code class="r">sum(concDirNaive &gt; 0) / length(concDirNaive)
+</code></pre>
+
+<pre><code>## [1] 0.6590494
+</code></pre>
+
+</body>
+
+</html>
